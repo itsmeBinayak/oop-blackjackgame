@@ -7,8 +7,8 @@ class Blackjack {
     function __construct() {
         $this->deck = new Deck();
         $this->deck->shuffle();
-        $this->player = $player;
-        $this->dealer = $player;
+        $this->player = new Player($this->deck);
+        $this->dealer = new Dealer($this->deck);
       }
     public function getPlayer() {
         return $this -> player;
