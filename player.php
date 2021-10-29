@@ -8,14 +8,22 @@ function __construct($deck) {
         $this->cards[] = $deck->drawCard();
     }
   }
-public function hit() {
-    $this -> primaryColor = $color;
+public function hit($deck) {
+    $this->cards=$deck->drawCard();
+    $score=$this->getScore();
+    if ($score>21) {
+        $this->lost = true;
+    }
 }
 public function surrender() {
     $this -> lost = true;
 }
 public function getScore() {
-    $this -> lost = $co;
+    $score = 0;
+    foreach ($this->cards as $card) {
+        $score+=$card->getValue();
+    }
+    return $score;
 }
 public function hasLost() {
     return $this->lost;
